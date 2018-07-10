@@ -1,7 +1,7 @@
 {
-  "name": "song-repo",
+  "name": "random-quote-machine",
   "version": "1.0.0",
-  "description": "task 7.3 link to the page: https://cerbia.github.io/song-repo/",
+  "description": "task 12.5 link to the page: https://cerbia.github.io/random-joke/",
   "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:*",
@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cerbia/song-repo.git"
+    "url": "git+https://github.com/Cerbia/random-joke.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cerbia/song-repo/issues"
+    "url": "https://github.com/Cerbia/random-joke/issues"
   },
-  "homepage": "https://github.com/Cerbia/song-repo#readme",
+  "homepage": "https://github.com/Cerbia/random-joke#readme",
   "devDependencies": {
     "autoprefixer-cli": "^1.0.0",
     "babel-cli": "^6.26.0",

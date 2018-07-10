@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Gaegu');
+html, body {
+	text-align: center;
+	font-family: 'Gaegu', cursive;
+}
+body {
+	background-color: #233D4D;
+}
+h1 {
+	color: white;
+}
+h2 {
+	color: #233D4D; //#579C87; 
+}
+h3 {
+	color: #579C87; //#A1C181;
+}
+.box {
+	border:5px solid #FCCA46;
+	padding:16px 31px;
+	margin:16px 31px;
+	background-color: rgba(252, 202, 70, .7);
+}
+.trigger, .tweet {
+	background-color:#fccc46;
+	border-radius:28px;
+	border:1px solid #fe802d;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #fe802d;
+}
+.trigger:hover {
+	background-color:#fe802d;
+}
+.trigger:active {
+	position:relative;
+	top:1px;
+}

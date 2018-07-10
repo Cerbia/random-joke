@@ -42,24 +42,18 @@ function createTweet(responseData) {
     }
 }
 
-window.onload = function () {
-    getQuote();
-};
-
-/*
-
 var url = 'http://api.icndb.com/jokes/random';
 
 var joke = document.getElementById('joke');
 var button = document.getElementById('get-joke');
-button.addEventListener('click', function() {
+button.addEventListener('click', function () {
     getRequest();
-})
+});
 
 function getRequest() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://api.icndb.com/jokes/random'); // just like it's been until now
-    request.onload = function() {
+    request.open('GET', prefix + url); // just like it's been until now
+    request.onload = function () {
         if (request.status == 200) {
             //console.log(request.response);
             obj = JSON.parse(request.response);
@@ -70,8 +64,7 @@ function getRequest() {
     request.send();
 }
 
-window.onload = function() {
+window.onload = function () {
     getRequest();
     getQuote();
 };
-*/

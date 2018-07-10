@@ -40,11 +40,6 @@ function createTweet(responseData) {
     } 
 }
 
-window.onload = function() {
-    getQuote();
-};
-
-/*
 
 var url = 'http://api.icndb.com/jokes/random';
 
@@ -56,7 +51,7 @@ button.addEventListener('click', function() {
 
 function getRequest() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://api.icndb.com/jokes/random'); // just like it's been until now
+    request.open('GET', prefix + url); // just like it's been until now
     request.onload = function() {
         if (request.status == 200) {
             //console.log(request.response);
@@ -72,4 +67,4 @@ window.onload = function() {
     getRequest();
     getQuote();
 };
-*/
+

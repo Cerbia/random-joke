@@ -7,12 +7,20 @@ var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&fi
 var quoteElement = document.querySelector('.quote');
 var authorElement = document.querySelector('.author');
 
+// Create hooks
+var fetchQuoteStart = new Event('fetchQuoteStart');
+var fetchQuoteEnd = new Event('fetchQuoteEnd');
+var fetchJokeStart = new Event('fetchJokeStart');
+var fetchJokeEnd = new Event('fetchJokeEnd');
+
 var trigger = document.querySelector('.trigger');
 trigger.addEventListener('click', function () {
     getQuote();
 });
 
 function getQuote() {
+    // Dispatch the event.
+    document.dispatchEvent(fetchQuoteStart);
     return fetch(prefix + quoteUrl, { cache: "no-store" }).then(function (response) {
         return response.json();
     }).then(createTweet).catch(function (error) {
@@ -21,7 +29,7 @@ function getQuote() {
 }
 
 function createTweet(responseData) {
-
+    debugger;
     dataElement = document.createElement('div');
     dataElement.innerHTML = responseData[0].content;
     var quoteText = dataElement.innerText.trim();
@@ -35,6 +43,9 @@ function createTweet(responseData) {
     if (tweetText.length > 140) {
         getQuote();
     } else {
+        debugger;
+        // Dispatch the event.
+        document.dispatchEvent(fetchQuoteEnd);
         var tweet = tweetLink + encodeURIComponent(tweetText);
         document.querySelector('.quote').innerText = quoteText;
         document.querySelector('.author').innerText = "Author: " + quoteAuthor;
@@ -51,6 +62,8 @@ button.addEventListener('click', function () {
 });
 
 function getRequest() {
+    // Dispatch the event.
+    document.dispatchEvent(fetchJokeStart);
     var request = new XMLHttpRequest();
     request.open('GET', prefix + url); // just like it's been until now
     request.onload = function () {
@@ -59,6 +72,8 @@ function getRequest() {
             obj = JSON.parse(request.response);
             //console.log(obj);
             joke.innerHTML = obj.value.joke;
+            // Dispatch the event.
+            document.dispatchEvent(fetchJokeEnd);
         }
     };
     request.send();
@@ -68,3 +83,24 @@ window.onload = function () {
     getRequest();
     getQuote();
 };
+
+// Listen for the event.
+document.addEventListener('fetchQuoteStart', function (e) {
+    document.getElementById("loader-quote").style.display = "block";
+    document.getElementById("content-quote").style.display = "none";
+}, false);
+
+document.addEventListener('fetchQuoteEnd', function (e) {
+    document.getElementById("loader-quote").style.display = "none";
+    document.getElementById("content-quote").style.display = "block";
+}, false);
+
+document.addEventListener('fetchJokeStart', function (e) {
+    document.getElementById("loader-joke").style.display = "block";
+    document.getElementById("joke").style.display = "none";
+}, false);
+
+document.addEventListener('fetchJokeEnd', function (e) {
+    document.getElementById("loader-joke").style.display = "none";
+    document.getElementById("joke").style.display = "block";
+}, false);

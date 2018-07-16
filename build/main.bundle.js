@@ -29,7 +29,6 @@ function getQuote() {
 }
 
 function createTweet(responseData) {
-    debugger;
     dataElement = document.createElement('div');
     dataElement.innerHTML = responseData[0].content;
     var quoteText = dataElement.innerText.trim();
@@ -43,7 +42,6 @@ function createTweet(responseData) {
     if (tweetText.length > 140) {
         getQuote();
     } else {
-        debugger;
         // Dispatch the event.
         document.dispatchEvent(fetchQuoteEnd);
         var tweet = tweetLink + encodeURIComponent(tweetText);
@@ -84,23 +82,28 @@ window.onload = function () {
     getQuote();
 };
 
+var loaderQuoteElem = document.getElementById("loader-quote");
+var contentQuoteElem = document.getElementById("content-quote");
+var loaderJokeElem = document.getElementById("loader-joke");
+var jokeElem = document.getElementById("joke");
+
 // Listen for the event.
 document.addEventListener('fetchQuoteStart', function (e) {
-    document.getElementById("loader-quote").style.display = "block";
-    document.getElementById("content-quote").style.display = "none";
+    loaderQuoteElem.style.display = "block";
+    contentQuoteElem.style.display = "none";
 }, false);
 
 document.addEventListener('fetchQuoteEnd', function (e) {
-    document.getElementById("loader-quote").style.display = "none";
-    document.getElementById("content-quote").style.display = "block";
+    loaderQuoteElem.style.display = "none";
+    contentQuoteElem.style.display = "block";
 }, false);
 
 document.addEventListener('fetchJokeStart', function (e) {
-    document.getElementById("loader-joke").style.display = "block";
-    document.getElementById("joke").style.display = "none";
+    loaderJokeElem.style.display = "block";
+    jokeElem.style.display = "none";
 }, false);
 
 document.addEventListener('fetchJokeEnd', function (e) {
-    document.getElementById("loader-joke").style.display = "none";
-    document.getElementById("joke").style.display = "block";
+    loaderJokeElem.style.display = "none";
+    jokeElem.style.display = "block";
 }, false);
